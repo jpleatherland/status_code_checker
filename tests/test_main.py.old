@@ -1,0 +1,23 @@
+import unittest
+from statuscodechecker.__main__ import parseCliArgs
+
+class TestParseCliArgs(unittest.TestCase):
+    def test_empty_args(self):
+        self.assertEqual(parseCliArgs(['main.py']), [])
+
+    def test_single_valid_arg(self):
+        self.assertEqual(parseCliArgs(['main.py', '200']), [200])
+
+    def test_multiple_valid_args(self):
+        self.assertEqual(parseCliArgs(['main.py', '200', '404', '500']), [200, 404, 500])
+
+    def test_invalid_args(self):
+        self.assertEqual(parseCliArgs(['main.py', 'abc', '404', 'xyz']), [404])
+
+    def test_mixed_args(self):
+        self.assertEqual(parseCliArgs(['main.py', '200', 'abc', '500']), [200, 500])
+
+    print("All tests passed!")
+
+if __name__ == '__main__':
+    unittest.main()

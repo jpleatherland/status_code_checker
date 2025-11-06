@@ -1,0 +1,29 @@
+[project]
+name = "statuscodechecker"
+version = "0.1.0"
+description = "Simple cli tool to check what a http status code means."
+readme = "README.md"
+authors = [
+    { name = "Jack Leatherland", email = "jack.leatherland@qbe.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+statuscodechecker = "statuscodechecker.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.9.7,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "mypy>=1.18.2",
+    "pre-commit>=4.3.0",
+    "pytest>=8.4.2",
+    "ruff>=0.14.3",
+]
