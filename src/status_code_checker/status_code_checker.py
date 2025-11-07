@@ -8,6 +8,6 @@ def explain_status_code(status_codes_to_explain: list[int]):
         if code_info:
             result.append(f"{status_code} - {code_info['title']}: {code_info['description']}")
         else:
-            result.append(f"{status_code} - Unknown: Status code may be a custom error defined on the server")
+            result.append(f"{status_code} - Unknown: Status code may be a custom error defined on the server.")
                     
     return result
