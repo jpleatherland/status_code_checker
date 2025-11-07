@@ -202,10 +202,6 @@ make run ARGS="200 404 500"
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## Author
 
 **Jack Leatherland** - [jack.leatherland@qbe.com](mailto:jack.leatherland@qbe.com)
