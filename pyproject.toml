@@ -1,5 +1,5 @@
 [project]
-name = "statuscodechecker"
+name = "status_code_checker"
 version = "0.1.0"
 description = "Simple cli tool to check what a http status code means."
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = []
 where = ["src"]
 
 [project.scripts]
-statuscodechecker = "statuscodechecker.__main__:main"
+statuscodechecker = "status_code_checker.__main__:main"
 
 [build-system]
 requires = ["uv_build>=0.9.7,<0.10.0"]
