@@ -1,7 +1,7 @@
 import argparse
 import sys
 from typing import List, Tuple
-from status_code_checker import explain_status_code
+from status_code_checker.status_code_checker import explain_status_code
 
 def parse_cli_args(argv: List[str]) -> Tuple[List[int], List[str]]:
     parser = argparse.ArgumentParser(
@@ -38,9 +38,14 @@ def main() -> int:
 
     explained = explain_status_code(ints)
 
-    formatted = format_explanations(explained)
+    print("\n")
+    if len(explained) == 1:
+        print("Status Code Explanation:")
+    else:
+        print("Status Code Explanations:")
+    print("\n".join(explained))
+    print("\n")
 
-    print(ints)
     return 0
 
 if __name__ == "__main__":

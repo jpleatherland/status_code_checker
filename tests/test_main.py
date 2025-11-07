@@ -1,5 +1,6 @@
 import unittest
-from statuscodechecker.__main__ import parse_cli_args
+import subprocess
+from status_code_checker.__main__ import parse_cli_args
 
 class TestParseCliArgs(unittest.TestCase):
     def test_no_values(self):
@@ -26,6 +27,21 @@ class TestParseCliArgs(unittest.TestCase):
         ints, invalid = parse_cli_args(['main.py', '123', '', '456', '7.89'])
         self.assertEqual(ints, [123, 456])
         self.assertEqual(invalid, ['', '7.89'])
+
+
+    def test_cli_known_code(self):
+        result = subprocess.run(
+            ["python3", "-m", "status_code_checker", "200"],
+            capture_output=True, text=True
+        )
+        assert "200 - OK" in result.stdout
+
+    def test_cli_unknown_code(self):
+        result = subprocess.run(
+            ["python3", "-m", "status_code_checker", "9999"],
+            capture_output=True, text=True
+        )
+        assert "9999 - Unknown" in result.stdout
 
 if __name__ == '__main__':
     unittest.main()
