@@ -2,6 +2,8 @@
 
 A simple and lightweight CLI tool to quickly look up HTTP status code meanings and descriptions.
 
+<img width="1177" height="562" alt="image" src="https://github.com/user-attachments/assets/de95717b-2b6b-448a-a3f7-a5f5c894ed72" />
+
 ## Features
 
 - 🚀 **Fast lookups**: Instantly get explanations for HTTP status codes
