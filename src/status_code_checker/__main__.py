@@ -37,7 +37,7 @@ def main() -> int:
 
     if invalid:
         print(
-            f"Discarded non-integer values: {', '.join(invalid)} (integers are required)"
+            f"Discarded non-integer {'values' if len(invalid) > 1 else 'value' }: {', '.join(invalid)}"
         )
 
     explained = explain_status_code(ints)
