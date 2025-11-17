@@ -206,7 +206,7 @@ make run ARGS="200 404 500"
 
 ## Author
 
-**Jack Leatherland** - [jack.leatherland@qbe.com](mailto:jack.leatherland@qbe.com)
+**Jack Leatherland**
 
 ## Acknowledgments
 
