@@ -3,18 +3,19 @@ import sys
 from typing import List, Tuple
 from status_code_checker.status_code_checker import explain_status_code
 
+# ASCII escape codes for formatting output
+BOLD = "\033[1m"
+RESET = "\033[0m"
+
+
 def parse_cli_args(argv: List[str]) -> Tuple[List[int], List[str]]:
     parser = argparse.ArgumentParser(
         prog="Status Code Checker",
-        description="Returns an explanation of the http status codes provided to the tool."
+        description="Returns an explanation of the http status codes provided to the tool.",
     )
 
     # Accept zero or more positional args; we'll do lenient parsing ourselves
-    parser.add_argument(
-        "values",
-        nargs="*",
-        help="Values to parse as integers"
-    )
+    parser.add_argument("values", nargs="*", help="Values to parse as integers")
     args = parser.parse_args(argv[1:])
 
     ints: List[int] = []
@@ -26,6 +27,7 @@ def parse_cli_args(argv: List[str]) -> Tuple[List[int], List[str]]:
             invalid.append(v)
     return ints, invalid
 
+
 def main() -> int:
     if len(sys.argv) < 2:
         print("No arguments provided.")
@@ -34,19 +36,27 @@ def main() -> int:
     ints, invalid = parse_cli_args(sys.argv)
 
     if invalid:
-        print(f"Discarded non-integer values: {', '.join(invalid)} (integers are required)")
+        print(
+            f"Discarded non-integer values: {', '.join(invalid)} (integers are required)"
+        )
 
     explained = explain_status_code(ints)
+    explained_indented = [f"    {line}" for line in explained]
 
-    print("\n")
-    if len(explained) == 1:
-        print("Status Code Explanation:")
-    else:
-        print("Status Code Explanations:")
-    print("\n".join(explained))
-    print("\n")
+    print(
+        "",
+        (
+            f"{BOLD}Status Code Explanations:{RESET}"
+            if len(explained) > 1
+            else f"{BOLD}Status Code Explanation:{RESET}"
+        ),
+        *explained_indented,
+        "",
+        sep="\n",
+    )
 
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

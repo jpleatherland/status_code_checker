@@ -315,7 +315,7 @@ wheels = [
 ]
 
 [[package]]
-name = "statuscodechecker"
+name = "status-code-checker"
 version = "0.1.0"
 source = { editable = "." }
 

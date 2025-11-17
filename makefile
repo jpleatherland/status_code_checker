@@ -1,9 +1,14 @@
 ARGS ?= --help
+UVFLAGS ?=
 
 install:
-	uv sync
+	uv $(UVFLAGS) sync
 	uv build
-	uv tool install .
+	uv tool install --force --no-cache .
+
+install-dev:
+	uv $(UVFLAGS) sync
+	uv tool install --editable .
 
 run:
 	uv run python3 -m status_code_checker $(ARGS)
